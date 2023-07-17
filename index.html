@@ -26,20 +26,20 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
+      
     </ul>
    </div>
   </div>
-  <script> 
-   var title = document.getElementById('header-title');
-    title.style.borderBottom = '3px solid black';
+  <script>
+ var items = document.querySelectorAll("#items li");
+items[1].style.color = "green";
+const oddItems = document.querySelectorAll("#items li");
 
-    var addItemsHeading = document.querySelector('h2.title');
-    addItemsHeading.style.fontWeight = 'bold';
-    addItemsHeading.style.color = 'green';
+for (let i = 0; i < oddItems.length; i += 2) {
+  oddItems[i].style.backgroundColor = "green";
+}
 
-    
-    
-</script>
+  </script>
 
 </body>
 </html>
