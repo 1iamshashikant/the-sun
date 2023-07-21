@@ -140,13 +140,14 @@ header {
     // Convert the updated array to a JSON string
     const updatedData = JSON.stringify(existingData);
 
-    
-    localStorage.setItem('userDetails', updatedData);
+    // Store the updated JSON string in the local storage
+    localStorage.setItem(email, updatedData);
 
-    // Clearing the input fields after submission
+    // Clear the input fields after submission
     nameInput.value = '';
     emailInput.value = '';
 
+    // Optionally, you can display a success message or perform other actions here
   }
 
   // Add event listener to the form
