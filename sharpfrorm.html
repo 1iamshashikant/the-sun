@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Examples</title>
+</head>
+<body>
+  <form id="myForm">
+    <label for="myInput">Input:</label>
+    <input type="text" id="myInput" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    // Click event
+    document.addEventListener('click', function(event) {
+      console.log('Click event:', event);
+    });
+
+    // Mouseover event
+    document.addEventListener('mouseover', function(event) {
+      console.log('Mouseover event:', event);
+    });
+
+    // Mouseout event
+    document.addEventListener('mouseout', function(event) {
+      console.log('Mouseout event:', event);
+    });
+
+    // Form submission event
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+      var input = document.getElementById('myInput').value;
+
+      // Perform necessary validations
+      if (input.trim() === '') {
+        console.log('Input is empty!');
+      } else {
+        console.log('Input:', input);
+      }
+    });
+  </script>
+</body>
+</html>
