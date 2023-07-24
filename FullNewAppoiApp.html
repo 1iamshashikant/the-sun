@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Book Appointment App</title>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  padding: 5px;
+  background: #f4f4f4;
+  margin: 5px 0;
+}
+
+header {
+  background: #f4f4f4;
+  padding: 1rem;
+  text-align: center;
+}
+
+.container {
+  margin: auto;
+  width: 800px;
+  overflow: auto;
+  padding: 3rem 2rem;
+}
+
+#my-form {
+  padding: 3rem;
+  background: #f4f4f4;
+}
+
+#my-form label {
+  display: block;
+}
+
+#my-form input[type='text'] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ba1515;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  border: 0;
+  background: #0dc810;
+  color: #fff;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+.btn:hover {
+  background: #444;
+}
+
+.bg-dark {
+  background: #333;
+  color: #fff;
+}
+
+.error {
+  background: orangered;
+  color: #fff;
+  padding: 5px;
+  margin: 5px;
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Booking appointment App</h1>
+    </header>
+
+    <section class="container">
+      <form onsubmit="saveToLocalStorage(event)" >
+        <h1>Book Now Here</h1>
+        <div class="msg"></div>
+        
+          <label>Name:</label>
+          <input type="text"  name="username" required>
+        
+          <label>Email:</label>
+          <input type="email"  name="emailId" required>
+        
+            <label>Phone Number:</label>
+            <input type="tel" name="phonenumber">
+        
+        <input class="btn" type="submit" value="Submit">
+      </form>
+
+      <ul id="listofitems">
+
+      </ul>
+
+      <!-- <ul class="items">
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+      </ul> -->
+    </section>
+
+
+    <script >
+        function saveToLocalStorage(event){
+            event.preventDefault();
+            const name =event.target.username.value;
+            const email=event.target.emailId.value;
+            const phonenumber=event.target.phonenumber.value;
+            //ES6 declaration
+           const obj={
+            name,
+            email,
+            phonenumber
+           }
+           localStorage.setItem(obj.email,JSON.stringify(obj));
+           showUserOnScreen(obj);
+           function  showUserOnScreen(obj){
+            const parentEl=document.getElementById('listofitems');
+            const childEl=document.createElement('li');
+            childEl.textContent=obj.name+'-'+obj.email+'-'+obj.phonenumber;
+
+            const deleteButton=document.createElement('input');
+            deleteButton.type='button';
+            deleteButton.value='Delete';
+            deleteButton.onclick=()=>{
+                localStorage.removeItem(obj.email);
+                parentEl.removeChild(childEl);
+            }
+            const editButton=document.createElement('input');
+            editButton.type='button';
+            editButton.value='Edit';
+            editButton.onclick=()=>{
+                localStorage.removeItem(obj.email);
+                parentEl.removeChild(childEl);
+                document.getElementById('usernameInputTag').valu=obj.name;
+                document.getElementById('emailInputTag').value=obj.email;
+                document.getElementById('phonenumberInputTag').value=obj.phonenumber;
+
+                
+
+            }
+            childEl.appendChild(deleteButton);
+            childEl.appendChild(editButton);
+            parentEl.appendChild(childEl);
+           }
+        };
+
+</script>
+
+
+  </body>
+</html>
