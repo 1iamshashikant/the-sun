@@ -120,6 +120,15 @@ header {
 
 
     <script >
+        window.onload = function () {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key !== "length") {
+        const obj = JSON.parse(localStorage.getItem(key));
+        showUserOnScreen(obj);
+      }
+    }
+  };
         function saveToLocalStorage(event){
             event.preventDefault();
             const name =event.target.username.value;
@@ -163,6 +172,26 @@ header {
             parentEl.appendChild(childEl);
            }
         };
+      
+
+    const editButton = document.createElement('input');
+    editButton.type = 'button';
+    editButton.value = 'Edit';
+    editButton.onclick = () => {
+      // Set form inputs to edited user data
+      document.getElementsByName('username')[0].value = obj.name;
+      document.getElementsByName('emailId')[0].value = obj.email;
+      document.getElementsByName('phonenumber')[0].value = obj.phonenumber;
+
+      // Remove the stored data
+      localStorage.removeItem(obj.email);
+      parentEl.removeChild(childEl);
+    };
+    childEl.appendChild(deleteButton);
+    childEl.appendChild(editButton);
+    parentEl.appendChild(childEl);
+
+
 
 </script>
 
