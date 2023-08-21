@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  int n = nums.length;
         int perfectTeams = 0;
 
@@ -24,3 +25,11 @@
         }
 
         return perfectTeams;
+=======
+var items=document.getElementsByClassName('list-group-item');
+items[2].style.backgroundColor='green';
+for(var i=0;i<items.length;i++){
+    items[i].style.fontWeight='bold';
+
+}
+>>>>>>> b6930c331328c16210490ed4c9284c06bece19c6
